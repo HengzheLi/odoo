@@ -52,7 +52,7 @@ class MrpProduction(models.Model):
         domain=[('type', 'in', ['product', 'consu'])],
         readonly=True, required=True,
         states={'confirmed': [('readonly', False)]})
-    product_tmpl_id = fields.Many2one('product.template', 'Product Template', related='product_id.product_tmpl_id', readonly=False)
+    product_tmpl_id = fields.Many2one('product.template', 'Product Template', related='product_id.product_tmpl_id', readonly=True)
     product_qty = fields.Float(
         'Quantity To Produce',
         default=1.0, digits=dp.get_precision('Product Unit of Measure'),
@@ -462,7 +462,7 @@ class MrpProduction(models.Model):
     @api.multi
     def _adjust_procure_method(self):
         try:
-            mto_route = self.env['stock.warehouse']._find_global_route('stock.route_warehouse0_mto', 'Make To Order')
+            mto_route = self.env['stock.warehouse']._find_global_route('stock.route_warehouse0_mto', _('Make To Order'))
         except:
             mto_route = False
         for move in self.move_raw_ids:

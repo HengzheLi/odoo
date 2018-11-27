@@ -3,24 +3,25 @@
 # * mail
 # 
 # Translators:
-# SHIMIZU Taku <shimizu.taku@gmail.com>, 2018
-# Martin Trigaux, 2018
-# Yoshi Tashiro <tashiro@roomsfor.hk>, 2018
-# NOKA Shigekazu <shigekazu.noka@gmail.com>, 2018
-# 高木正勝 <masakatsu.takagi@pro-spire.co.jp>, 2018
-# Norimichi Sugimoto <norimichi.sugimoto@tls-ltd.co.jp>, 2018
 # 前園義博 <yoshihiro.maezono@pro-spire.co.jp>, 2018
 # 城谷 龍弥 <tatsuya.shirotani@pro-spire.co.jp>, 2018
 # kent_ocean <ke.tanabe@gmail.com>, 2018
-# Manami Hashi <manami@roomsfor.hk>, 2018
+# NOKA Shigekazu <shigekazu.noka@gmail.com>, 2018
+# 高木正勝 <masakatsu.takagi@pro-spire.co.jp>, 2018
 # Tim Siu Lai <tl@roomsfor.hk>, 2018
+# SHIMIZU Taku <shimizu.taku@gmail.com>, 2018
+# Martin Trigaux, 2018
+# Manami Hashi <manami@roomsfor.hk>, 2018
+# Norimichi Sugimoto <norimichi.sugimoto@tls-ltd.co.jp>, 2018
+# Yoshi Tashiro <tashiro@roomsfor.hk>, 2018
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-08 06:49+0000\n"
-"PO-Revision-Date: 2018-10-08 06:49+0000\n"
-"Last-Translator: Tim Siu Lai <tl@roomsfor.hk>, 2018\n"
+"PO-Revision-Date: 2018-08-24 09:20+0000\n"
+"Last-Translator: Yoshi Tashiro <tashiro@roomsfor.hk>, 2018\n"
 "Language-Team: Japanese (https://www.transifex.com/odoo/teams/41243/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2558,6 +2559,12 @@ msgid "Invalid email address"
 msgstr ""
 
 #. module: mail
+#: code:addons/mail/models/mail_blacklist.py:35
+#, python-format
+msgid "Invalid email address %r"
+msgstr ""
+
+#. module: mail
 #: code:addons/mail/models/mail_alias.py:88
 #, python-format
 msgid ""
@@ -3039,7 +3046,7 @@ msgstr ""
 #: code:addons/mail/static/src/xml/activity.xml:80
 #, python-format
 msgid "Mark Done"
-msgstr ""
+msgstr "完了とする"
 
 #. module: mail
 #. openerp-web
@@ -3081,7 +3088,7 @@ msgstr "処理準備"
 #: code:addons/mail/static/src/xml/web_kanban_activity.xml:71
 #, python-format
 msgid "Mark as done"
-msgstr ""
+msgstr "完了とする"
 
 #. module: mail
 #: model:ir.ui.menu,name:mail.mail_blacklist_menu
@@ -4093,7 +4100,7 @@ msgstr "予定済"
 #: code:addons/mail/static/src/xml/activity.xml:6
 #, python-format
 msgid "Planned activities"
-msgstr ""
+msgstr "計画済の活動"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.mail_activity_type_view_tree
@@ -4724,7 +4731,8 @@ msgstr "Eメールでメッセージを送信"
 
 #. module: mail
 #. openerp-web
-#: code:addons/mail/static/src/xml/thread.xml:397
+#: code:addons/mail/static/src/xml/thread.xml:390
+#: model_terms:ir.ui.view,arch_db:mail.message_notification_email
 #: model_terms:ir.ui.view,arch_db:mail.view_mail_search
 #: selection:mail.mail,state:0 selection:mail.notification,email_status:0
 #, python-format
@@ -5822,6 +5830,7 @@ msgstr "ボードミーティング"
 #. module: mail
 #. openerp-web
 #: code:addons/mail/static/src/xml/activity.xml:43
+#: model_terms:ir.ui.view,arch_db:mail.message_notification_email
 #: model_terms:ir.ui.view,arch_db:mail.view_mail_form
 #, python-format
 msgid "by"

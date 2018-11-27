@@ -3,18 +3,19 @@
 # * stock
 # 
 # Translators:
-# Martin Trigaux, 2018
-# Bohdan Lisnenko, 2018
 # ТАрас <tratatuta@i.ua>, 2018
-# Alina Lisnenko <alinasemeniuk1@gmail.com>, 2018
 # Zoriana Zaiats, 2018
+# Bohdan Lisnenko, 2018
+# Martin Trigaux, 2018
+# Alina Lisnenko <alinasemeniuk1@gmail.com>, 2018
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-08 06:48+0000\n"
-"PO-Revision-Date: 2018-10-08 06:48+0000\n"
-"Last-Translator: Zoriana Zaiats, 2018\n"
+"POT-Creation-Date: 2018-10-24 09:34+0000\n"
+"PO-Revision-Date: 2018-08-24 09:25+0000\n"
+"Last-Translator: Alina Lisnenko <alinasemeniuk1@gmail.com>, 2018\n"
 "Language-Team: Ukrainian (https://www.transifex.com/odoo/teams/41243/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -429,6 +430,13 @@ msgid "Add a new route"
 msgstr ""
 
 #. module: stock
+#: model_terms:ir.ui.view,arch_db:stock.view_picking_form
+msgid ""
+"Add an internal note that will be printed on the Picking Operations sheet"
+msgstr ""
+"Додайте внутрішню примітку, яка буде надрукована на листі комплектації"
+
+#. module: stock
 #: model:ir.model.fields,help:stock.field_res_config_settings__group_stock_adv_location
 msgid ""
 "Add and customize route operations to process product moves in your warehouse(s): e.g. unload > quality control > stock for incoming products, pick > pack > ship for outgoing products. \n"
@@ -617,7 +625,7 @@ msgstr "На конкретну дату"
 #: model:ir.model.fields,field_description:stock.field_stock_picking__message_attachment_count
 #: model:ir.model.fields,field_description:stock.field_stock_production_lot__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Підрахунок прикріплення"
 
 #. module: stock
 #: model:ir.ui.menu,name:stock.menu_variants_action
@@ -1014,7 +1022,7 @@ msgstr "Умови"
 #. module: stock
 #: model:ir.model,name:stock.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Налаштування"
 
 #. module: stock
 #: model:ir.ui.menu,name:stock.menu_stock_config_settings
@@ -1368,8 +1376,8 @@ msgstr "Клієнти"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__module_delivery_dhl
-msgid "DHL Connector"
-msgstr ""
+msgid "DHL USA"
+msgstr "DHL USA"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_report_stock_forecast__date
@@ -1464,6 +1472,8 @@ msgstr "Маршрут для видачі за замовчуванням"
 #: model:ir.model.fields,help:stock.field_stock_warehouse_orderpoint__product_uom
 msgid "Default unit of measure used for all stock operations."
 msgstr ""
+"Стандартна одиниця вимірювання, що використовується для всіх операцій з "
+"акціями."
 
 #. module: stock
 #: selection:stock.move,procure_method:0
@@ -1821,8 +1831,8 @@ msgstr "Чорнові переміщення"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__module_delivery_easypost
-msgid "Easypost Connector"
-msgstr ""
+msgid "Easypost"
+msgstr "Easypost"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form
@@ -1893,8 +1903,8 @@ msgstr "FIFO, LIFO..."
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__module_delivery_fedex
-msgid "FedEx Connector"
-msgstr ""
+msgid "FedEx"
+msgstr "FedEx"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_package_destination__filtered_location
@@ -2209,7 +2219,7 @@ msgstr "Якщо відмічено, то нові повідомлення бу
 #: model:ir.model.fields,help:stock.field_stock_picking__message_has_error
 #: model:ir.model.fields,help:stock.field_stock_production_lot__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Якщо позначено, деякі повідомлення мають помилку доставки."
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_move__propagate
@@ -3063,10 +3073,13 @@ msgstr "Правило ВПЗ"
 #: model:ir.model.fields,field_description:stock.field_stock_picking__message_main_attachment_id
 #: model:ir.model.fields,field_description:stock.field_stock_production_lot__message_main_attachment_id
 msgid "Main Attachment"
-msgstr ""
+msgstr "Основне прикріплення"
 
 #. module: stock
+#: code:addons/stock/models/stock_warehouse.py:288
+#: code:addons/stock/models/stock_warehouse.py:629
 #: model:stock.location.route,name:stock.route_warehouse0_mto
+#, python-format
 msgid "Make To Order"
 msgstr "Виготовлення під замовлення"
 
@@ -3159,7 +3172,7 @@ msgstr "Максимальна кількість"
 #: model:ir.model.fields,field_description:stock.field_stock_picking__message_has_error
 #: model:ir.model.fields,field_description:stock.field_stock_production_lot__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Помилка доставлення повідомлення"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_partner__picking_warn_msg
@@ -3294,6 +3307,9 @@ msgid ""
 " If none is given, the moves generated by stock rules will be grouped into "
 "one big picking."
 msgstr ""
+"Рухи, створені за допомогою цього пункту призначення, будуть поміщені в цю "
+"групу закупівель. Якщо нічого не задано, рухи, створені за складськими "
+"правилами, будуть згруповані в один великий вибір."
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__group_stock_adv_location
@@ -3447,6 +3463,11 @@ msgid "Not urgent"
 msgstr "Нетерміновий"
 
 #. module: stock
+#: model_terms:ir.ui.view,arch_db:stock.view_picking_form
+msgid "Note"
+msgstr "Примітка"
+
+#. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move__note
 #: model:ir.model.fields,field_description:stock.field_stock_picking__note
 #: model_terms:ir.ui.view,arch_db:stock.view_inventory_form
@@ -3478,7 +3499,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock.field_stock_picking__message_has_error_counter
 #: model:ir.model.fields,field_description:stock.field_stock_production_lot__message_has_error_counter
 msgid "Number of error"
-msgstr ""
+msgstr "Кількість помилок"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_picking__message_needaction_counter
@@ -3490,7 +3511,7 @@ msgstr "Кількість повідомлень, які потебують д�
 #: model:ir.model.fields,help:stock.field_stock_picking__message_has_error_counter
 #: model:ir.model.fields,help:stock.field_stock_production_lot__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Кількість повідомлень з помилковою дставкою"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_picking__message_unread_counter
@@ -4809,7 +4830,7 @@ msgstr "Відповідальний"
 #: model:ir.model.fields,field_description:stock.field_stock_picking__activity_user_id
 #: model:ir.model.fields,field_description:stock.field_stock_production_lot__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Відповідальний користувач"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_warehouse
@@ -5515,7 +5536,7 @@ msgstr "Історія складської кількості"
 #: model:ir.model,name:stock.model_stock_rule
 #: model:ir.model.fields,field_description:stock.field_stock_move__rule_id
 msgid "Stock Rule"
-msgstr ""
+msgstr "Складське правило"
 
 #. module: stock
 #: model:ir.actions.act_window,name:stock.action_stock_rules_report
@@ -6244,13 +6265,13 @@ msgstr "Тип операції"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__module_delivery_ups
-msgid "UPS Connector"
-msgstr ""
+msgid "UPS"
+msgstr "UPS"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__module_delivery_usps
-msgid "USPS Connector"
-msgstr ""
+msgid "USPS"
+msgstr "USPS"
 
 #. module: stock
 #. openerp-web
@@ -6419,7 +6440,7 @@ msgstr ""
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
 msgid "Use your own routes and putaway strategies"
-msgstr "Використовуйте свої власні маршрути та стратегії"
+msgstr "Використовуйте свої власні маршрути та стратегії викладки"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_picking_type__sequence
@@ -7085,8 +7106,8 @@ msgstr "_Скасувати"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__module_delivery_bpost
-msgid "bpost Connector"
-msgstr ""
+msgid "bpost"
+msgstr "bpost"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_template_property_form

@@ -15,6 +15,7 @@ var EditPageMenu = websiteNavbarData.WebsiteNavbarActionWidget.extend({
     xmlDependencies: ['/website/static/src/xml/website.editor.xml'],
     actions: _.extend({}, websiteNavbarData.WebsiteNavbarActionWidget.prototype.actions, {
         edit: '_startEditMode',
+        on_save: '_onSave',
     }),
     custom_events: _.extend({}, websiteNavbarData.WebsiteNavbarActionWidget.custom_events || {}, {
         snippet_dropped: '_onSnippetDropped',
@@ -37,7 +38,8 @@ var EditPageMenu = websiteNavbarData.WebsiteNavbarActionWidget.extend({
 
         // If we auto start the editor, do not show a welcome message
         if (this._editorAutoStart) {
-            return $.when(def, this._startEditMode());
+            this._startEditMode();
+            return def;
         }
 
         // Check that the page is empty
@@ -51,8 +53,8 @@ var EditPageMenu = websiteNavbarData.WebsiteNavbarActionWidget.extend({
         this.$welcomeMessage.css('min-height', $wrap.parent('main').height() - ($wrap.outerHeight(true) - $wrap.height()));
         $wrap.empty().append(this.$welcomeMessage);
 
-        setTimeout(function(){
-            if($('.o_tooltip.o_animated').length) {
+        setTimeout(function () {
+            if ($('.o_tooltip.o_animated').length) {
                 $('.o_tooltip_container').addClass('show');
             }
         }, 1000); // ugly hack to wait that tooltip is loaded
@@ -88,6 +90,19 @@ var EditPageMenu = websiteNavbarData.WebsiteNavbarActionWidget.extend({
             return def;
         });
     },
+    /**
+     * On save, the editor will ask to parent widgets if something needs to be
+     * done first. The website navbar will receive that demand and asks to its
+     * action-capable components to do something. For example, the content menu
+     * handles page-related options saving. However, some users with limited
+     * access rights do not have the content menu... but the website navbar
+     * expects that the save action is performed. So, this empty action is
+     * defined here so that all users have an 'on_save' related action.
+     *
+     * @private
+     * @todo improve the system to somehow declare required/optional actions
+     */
+    _onSave: function () {},
 
     //--------------------------------------------------------------------------
     // Handlers

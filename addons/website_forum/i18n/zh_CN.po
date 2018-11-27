@@ -3,10 +3,8 @@
 # * website_forum
 # 
 # Translators:
+# inspur qiuguodong <qiuguodong@inspur.com>, 2018
 # e2f <projects@e2f.com>, 2018
-# Martin Trigaux, 2018
-# Jeffery CHEN Fan <jeffery9@gmail.com>, 2018
-# liAnGjiA <liangjia@qq.com>, 2018
 # v2exerer <9010446@qq.com>, 2018
 # 苏州远鼎 <tiexinliu@126.com>, 2018
 # fausthuang, 2018
@@ -20,17 +18,21 @@
 # Lisa Zhang <lzh@odoo.com>, 2018
 # bower Guo <124358678@qq.com>, 2018
 # roye w <159820@qq.com>, 2018
+# Martin Trigaux, 2018
 # Youfu Sheng <wdmsyf@sina.com>, 2018
 # diaojiaolou <124412206@qq.com>, 2018
-# snow wang <147156565@qq.com>, 2018
+# Jeffery CHEN Fan <jeffery9@gmail.com>, 2018
+# liAnGjiA <liangjia@qq.com>, 2018
 # 演奏王 <wangwhai@qq.com>, 2018
+# snow wang <147156565@qq.com>, 2018
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~11.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-02 10:06+0000\n"
-"PO-Revision-Date: 2018-10-02 10:06+0000\n"
-"Last-Translator: 演奏王 <wangwhai@qq.com>, 2018\n"
+"PO-Revision-Date: 2018-08-24 09:34+0000\n"
+"Last-Translator: snow wang <147156565@qq.com>, 2018\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/odoo/teams/41243/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -959,7 +961,7 @@ msgstr "能被标记"
 #. module: website_forum
 #: model:ir.model.fields,field_description:website_forum.field_forum_post__can_moderate
 msgid "Can Moderate"
-msgstr "能缓和"
+msgstr "能节制"
 
 #. module: website_forum
 #: model:ir.model.fields,field_description:website_forum.field_forum_post__can_unlink
@@ -1823,7 +1825,7 @@ msgid ""
 "            them."
 msgstr ""
 "如果你关闭此帖文，它会向大多数用户隐藏。只有\n"
-"具有高贡献度用户可以看到已经关闭的帖文并且讨论\n"
+"具有高贡献度用户可以看到已经关闭的帖文并且节制\n"
 "他们。"
 
 #. module: website_forum
@@ -1848,7 +1850,7 @@ msgid ""
 "            them."
 msgstr ""
 "如果你标记这个帖子为冒犯的，它会被隐藏于大多数用户。只有\n"
-"具有高贡献度的用户可以评论它。"
+"具有高贡献度的用户可以节制它。"
 
 #. module: website_forum
 #. openerp-web
@@ -1867,7 +1869,7 @@ msgstr "库存日期问题、任务剩余小时数。您能帮我解决加拿大
 #. module: website_forum
 #: model:ir.model.fields,field_description:website_forum.field_forum_post__user_favourite
 msgid "Is Favourite"
-msgstr "最受欢迎的"
+msgstr "受欢迎的"
 
 #. module: website_forum
 #: model:ir.model.fields,field_description:website_forum.field_forum_forum__message_is_follower
@@ -2032,12 +2034,12 @@ msgstr "消息"
 #. module: website_forum
 #: model:ir.model.fields,field_description:website_forum.field_forum_forum__karma_moderate
 msgid "Moderate posts"
-msgstr "审核帖子"
+msgstr "节制帖子"
 
 #. module: website_forum
 #: model_terms:ir.ui.view,arch_db:website_forum.header
 msgid "Moderation Tools"
-msgstr "调节工具"
+msgstr "审核工具"
 
 #. module: website_forum
 #: model_terms:forum.forum,faq:website_forum.forum_help

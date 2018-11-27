@@ -111,6 +111,11 @@ class Website(models.Model):
         ('b2c', 'Free sign up'),
     ], string='Customer Account', default='b2b')
 
+    @api.onchange('language_ids')
+    def _onchange_language_ids(self):
+        if self.language_ids and self.default_lang_id not in self.language_ids:
+            self.default_lang_id = self.language_ids[0]
+
     @api.multi
     def _compute_menu(self):
         Menu = self.env['website.menu']
@@ -467,7 +472,7 @@ class Website(models.Model):
         website_id = self._get_current_website_id(domain_name, country_id, fallback=fallback)
         return self.browse(website_id)
 
-    @tools.cache('domain_name', 'country_id')
+    @tools.cache('domain_name', 'country_id', 'fallback')
     def _get_current_website_id(self, domain_name, country_id, fallback=True):
         # sort on country_group_ids so that we fall back on a generic website (empty country_group_ids)
         websites = self.search([('domain', '=', domain_name)]).sorted('country_group_ids')

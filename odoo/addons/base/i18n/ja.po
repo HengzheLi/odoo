@@ -3,23 +3,24 @@
 # * base
 # 
 # Translators:
-# Martin Trigaux, 2018
-# Yoshi Tashiro <tashiro@roomsfor.hk>, 2018
 # Takahiro MURAKAMI <murakami@date-yakkyoku.com>, 2018
-# Norimichi Sugimoto <norimichi.sugimoto@tls-ltd.co.jp>, 2018
-# Takuya Sawada <takuya@tuntunkun.com>, 2018
 # SHIMIZU Taku <shimizu.taku@gmail.com>, 2018
 # NOKA Shigekazu <shigekazu.noka@gmail.com>, 2018
-# 高木正勝 <masakatsu.takagi@pro-spire.co.jp>, 2018
 # Tim Siu Lai <tl@roomsfor.hk>, 2018
+# Takuya Sawada <takuya@tuntunkun.com>, 2018
 # Manami Hashi <manami@roomsfor.hk>, 2018
+# 高木正勝 <masakatsu.takagi@pro-spire.co.jp>, 2018
+# Martin Trigaux, 2018
+# Norimichi Sugimoto <norimichi.sugimoto@tls-ltd.co.jp>, 2018
+# Yoshi Tashiro <tashiro@roomsfor.hk>, 2018
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-08 07:02+0000\n"
-"PO-Revision-Date: 2018-10-08 07:02+0000\n"
-"Last-Translator: Manami Hashi <manami@roomsfor.hk>, 2018\n"
+"PO-Revision-Date: 2018-08-24 09:14+0000\n"
+"Last-Translator: Yoshi Tashiro <tashiro@roomsfor.hk>, 2018\n"
 "Language-Team: Japanese (https://www.transifex.com/odoo/teams/41243/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -6815,7 +6816,7 @@ msgstr "アクセストークン"
 #. module: base
 #: model:res.groups,name:base.group_private_addresses
 msgid "Access to Private Addresses"
-msgstr ""
+msgstr "プライベートアドレスへのアクセス"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_analytic_default
@@ -7408,12 +7409,12 @@ msgstr "総計後"
 #. module: base
 #: model:ir.module.category,name:base.module_category_helpdesk
 msgid "After-Sales"
-msgstr ""
+msgstr "アフターサービス"
 
 #. module: base
 #: model:ir.module.category,description:base.module_category_helpdesk
 msgid "After-sales services"
-msgstr ""
+msgstr "アフターサービス"
 
 #. module: base
 #: model:res.partner.industry,name:base.res_partner_industry_A
@@ -10781,7 +10782,7 @@ msgstr "文書管理"
 #. module: base
 #: model:ir.module.category,name:base.module_category_sign
 msgid "Document Signatures"
-msgstr ""
+msgstr "ドキュメント署名"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_company__external_report_layout_id
@@ -13727,7 +13728,7 @@ msgstr "言語をインストール"
 #. module: base
 #: model:ir.actions.server,name:base.action_server_module_immediate_install
 msgid "Install Modules"
-msgstr ""
+msgstr "モジュールインストール"
 
 #. module: base
 #: selection:ir.module.module,state:0
@@ -13821,7 +13822,7 @@ msgstr "内部ソース"
 #. module: base
 #: model:res.groups,name:base.group_user
 msgid "Internal User"
-msgstr ""
+msgstr "内部ユーザ"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_users_search
@@ -22440,7 +22441,7 @@ msgstr "ユーザログイン"
 #: model_terms:ir.ui.view,arch_db:base.user_groups_view
 #, python-format
 msgid "User Type"
-msgstr ""
+msgstr "ユーザタイプ"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_users__log_ids
@@ -22450,7 +22451,7 @@ msgstr "ユーザのログエントリ"
 #. module: base
 #: model:ir.module.category,name:base.module_category_user_type
 msgid "User types"
-msgstr ""
+msgstr "ユーザタイプ"
 
 #. module: base
 #: model:ir.model,name:base.model_change_password_user
