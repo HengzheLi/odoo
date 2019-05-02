@@ -265,7 +265,7 @@ class PurchaseRequisitionLine(models.Model):
     @api.onchange('product_id')
     def _onchange_product_id(self):
         if self.product_id:
-            self.product_uom_id = self.product_id.uom_id
+            self.product_uom_id = self.product_id.uom_po_id
             self.product_qty = 1.0
         if not self.schedule_date:
             self.schedule_date = self.requisition_id.schedule_date
@@ -326,7 +326,7 @@ class PurchaseOrder(models.Model):
             else:
                 self.origin = requisition.name
         self.notes = requisition.description
-        self.date_order = requisition.date_end or fields.Datetime.now()
+        self.date_order = fields.Datetime.now()
         self.picking_type_id = requisition.picking_type_id.id
 
         if requisition.type_id.line_copy != 'copy':
@@ -421,10 +421,11 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     def _prepare_sellers(self, params):
+        sellers = super(ProductProduct, self)._prepare_sellers(params)
         if params and params.get('order_id'):
-            return self.seller_ids.filtered(lambda s: not s.purchase_requisition_id or s.purchase_requisition_id == params['order_id'].requisition_id)
+            return sellers.filtered(lambda s: not s.purchase_requisition_id or s.purchase_requisition_id == params['order_id'].requisition_id)
         else:
-            return self.seller_ids
+            return sellers
 
 
 class ProductTemplate(models.Model):
@@ -489,7 +490,7 @@ class StockMove(models.Model):
 
     def _get_upstream_documents_and_responsibles(self, visited):
         if self.requisition_line_ids:
-            return [(requisition_line.requisition_id, requisition_line.requisition_id.user_id, visited) for requisition_line in self.requisition_line_ids if requisition_line.state not in ('done', 'cancel')]
+            return [(requisition_line.requisition_id, requisition_line.requisition_id.user_id, visited) for requisition_line in self.requisition_line_ids if requisition_line.requisition_id.state not in ('done', 'cancel')]
         else:
             return super(StockMove, self)._get_upstream_documents_and_responsibles(visited)
 

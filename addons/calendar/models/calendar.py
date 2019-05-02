@@ -409,9 +409,8 @@ class AlarmManager(models.AbstractModel):
 
         all_meetings = self.get_next_potential_limit_alarm('notification', partner_id=partner.id)
         time_limit = 3600 * 24  # return alarms of the next 24 hours
-        for event_id in all_meetings:
-            max_delta = all_meetings[event_id]['max_duration']
-            meeting = self.env['calendar.event'].browse(event_id)
+        for meeting in self.env['calendar.event'].search([('id', 'in', list(all_meetings))]):  # cannot browse
+            max_delta = all_meetings[meeting.id]['max_duration']
             if meeting.recurrency:
                 b_found = False
                 last_found = False
@@ -1129,6 +1128,9 @@ class Meeting(models.Model):
             select_fields = ["id"]
             where_params_list = []
             for pos, arg in enumerate(domain):
+                # hack: if we received recurrent ids, we need to clean them
+                if arg[0] == 'id' and arg[1] in ('in', 'not in'):
+                    arg = (arg[0], arg[1], [calendar_id2real_id(id) for id in arg[2]])
                 if not arg[0] in ('start', 'stop', 'final_date', '&', '|'):
                     e = expression.expression([arg], self)
                     where_clause, where_params = e.to_sql()  # CAUTION, wont work if field is autojoin, not supported
