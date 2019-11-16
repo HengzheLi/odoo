@@ -165,11 +165,11 @@ def init_logger():
                     # situations were people do log-shipping of rotated data?
                     _logger.warn("WARNING: built-in log rotation is not reliable in multi-worker scenarios and may incur significant data loss. "
                                  "It is strongly recommended to use an external log rotation utility or use system loggers (--syslog) instead.")
-                handler = logging.handlers.TimedRotatingFileHandler(filename=logf, when='D', interval=1, backupCount=30)
+                handler = logging.handlers.TimedRotatingFileHandler(filename=logf, when='D', interval=1, backupCount=30, encoding='utf-8')
             elif os.name == 'posix':
                 handler = logging.handlers.WatchedFileHandler(logf)
             else:
-                handler = logging.FileHandler(logf)
+                handler = logging.FileHandler(logf, 'w', 'utf-8')
         except Exception:
             sys.stderr.write("ERROR: couldn't create the logfile directory. Logging to the standard output.\n")
 
