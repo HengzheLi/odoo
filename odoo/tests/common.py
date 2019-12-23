@@ -18,6 +18,7 @@ import re
 import requests
 import shutil
 import signal
+import socket
 import subprocess
 import tempfile
 import threading
@@ -32,7 +33,7 @@ from decorator import decorator
 from lxml import etree, html
 
 from odoo.models import BaseModel
-from odoo.osv.expression import normalize_domain
+from odoo.osv.expression import normalize_domain, TRUE_LEAF, FALSE_LEAF
 from odoo.tools import pycompat
 from odoo.tools import single_email_re
 from odoo.tools.misc import find_in_path
@@ -470,7 +471,7 @@ class ChromeBrowser():
         if websocket is None:
             self._logger.warning("websocket-client module is not installed")
             raise unittest.SkipTest("websocket-client module is not installed")
-        self.devtools_port = PORT + 2
+        self.devtools_port = None
         self.ws_url = ''  # WebSocketUrl
         self.ws = None  # websocket
         self.request_id = 0
@@ -539,6 +540,12 @@ class ChromeBrowser():
     def _chrome_start(self):
         if self.chrome_process is not None:
             return
+        with socket.socket() as s:
+            s.bind(('localhost', 0))
+            if hasattr(socket, 'SO_REUSEADDR'):
+                s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            _, self.devtools_port = s.getsockname()
+
         switches = {
             '--headless': '',
             '--enable-logging': 'stderr',
@@ -1293,7 +1300,13 @@ class Form(object):
                 e1 = stack.pop()
                 e2 = stack.pop()
                 stack.append(e1 or e2)
-            elif isinstance(it, list):
+            elif isinstance(it, tuple):
+                if it == TRUE_LEAF:
+                    stack.append(True)
+                    continue
+                elif it == FALSE_LEAF:
+                    stack.append(False)
+                    continue
                 f, op, val = it
                 # hack-ish handling of parent.<field> modifiers
                 f, n = re.subn(r'^parent\.', '', f, 1)
@@ -1317,7 +1330,7 @@ class Form(object):
 
                 stack.append(self._OPS[op](field_val, val))
             else:
-                raise ValueError("Unknown domain element %s" % it)
+                raise ValueError("Unknown domain element %s" % [it])
         [result] = stack
         return result
     _OPS = {
