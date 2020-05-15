@@ -209,6 +209,8 @@ class AccountMove(models.Model):
 
             # Process taxes.
             for tax in to_process_taxes:
+                if tax.price_include:
+                    tax = tax.with_context(handle_price_include=False)
                 tax_line = _find_existing_tax_line(self.line_ids, tax, parsed_key['tag_ids'], parsed_key['analytic_account_id'])
                 lines_to_sum = _get_lines_to_sum(self.line_ids, tax, parsed_key['tag_ids'], parsed_key['analytic_account_id'])
 
@@ -376,10 +378,7 @@ class AccountMove(models.Model):
 
     @api.multi
     def unlink(self):
-        for move in self:
-            #check the lock date + check if some entries are reconciled
-            move.line_ids._update_check()
-            move.line_ids.unlink()
+        self.mapped('line_ids').unlink()
         return super(AccountMove, self).unlink()
 
     @api.multi
@@ -414,7 +413,7 @@ class AccountMove(models.Model):
         # are already done. Then, this query MUST NOT depend of computed stored fields (e.g. balance).
         # It happens as the ORM makes the create with the 'no_recompute' statement.
         self._cr.execute('''
-            SELECT line.move_id, ROUND(SUM(debit - credit), currency.decimal_places)
+            SELECT line.move_id, ROUND(SUM(line.debit - line.credit), currency.decimal_places)
             FROM account_move_line line
             JOIN account_move move ON move.id = line.move_id
             JOIN account_journal journal ON journal.id = move.journal_id
@@ -422,7 +421,7 @@ class AccountMove(models.Model):
             JOIN res_currency currency ON currency.id = company.currency_id
             WHERE line.move_id IN %s
             GROUP BY line.move_id, currency.decimal_places
-            HAVING ROUND(SUM(debit - credit), currency.decimal_places) != 0.0;
+            HAVING ROUND(SUM(line.debit - line.credit), currency.decimal_places) != 0.0;
         ''', [tuple(self.ids)])
 
         res = self._cr.fetchone()
